@@ -211,7 +211,7 @@ $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicio
 <script>
     function mostrar_datos_modal_editar(id_servicio) {
       body_modal_editar = document.getElementById('body_modal_editar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.servicio.editar.php?codigo_servicio=' + id_servicio)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.servicio.editar.php?codigo_servicio=' + id_servicio)
         .then(response => response.text())
         .then(data => {
           body_modal_editar.innerHTML = data
@@ -220,7 +220,7 @@ $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicio
 
     function mostrar_datos_modal_eliminar(id_servicio) {
       body_modal_eliminar = document.getElementById('body_modal_eliminar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.servicio.eliminar.php?codigo_servicio=' + id_servicio)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.servicio.eliminar.php?codigo_servicio=' + id_servicio)
         .then(response => response.text())
         .then(data => {
           body_modal_eliminar.innerHTML = data
@@ -229,7 +229,7 @@ $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicio
 
     function datos_modal_agregar_servicio() {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.servicio.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.servicio.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data
@@ -238,7 +238,7 @@ $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicio
     
     function datos_modal_agregar() {
       body_modal_agregar = document.getElementById('body_modal_agregar_plan')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.plan.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.plan.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

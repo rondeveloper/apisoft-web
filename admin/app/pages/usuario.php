@@ -153,7 +153,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_usuario);
 <script>
     function mostrar_datos_modal_editar(id_usuario) {
       body_modal_editar = document.getElementById('body_modal_editar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.usuario.editar.php?codigo_usuario=' + id_usuario)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.usuario.editar.php?codigo_usuario=' + id_usuario)
         .then(response => response.text())
         .then(data => {
           body_modal_editar.innerHTML = data
@@ -162,7 +162,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_usuario);
 
     function mostrar_datos_modal_eliminar(id_usuario) {
       body_modal_eliminar = document.getElementById('body_modal_eliminar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.usuario.eliminar.php?codigo_usuario=' + id_usuario)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.usuario.eliminar.php?codigo_usuario=' + id_usuario)
         .then(response => response.text())
         .then(data => {
           body_modal_eliminar.innerHTML = data
@@ -171,7 +171,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_usuario);
 
     function datos_modal_agregar() {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.usuario.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.usuario.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

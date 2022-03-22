@@ -1,31 +1,30 @@
 <?php
-$alert="";
-  include "admin/app/items/DB.php";
-  if (isset($_POST['agregar-consulta'])) {
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $email = $_POST['email'];
-    $telefono = $_POST['telefono'];
-    $mensaje = $_POST['mensaje'];
-    $consulta_insert = "INSERT INTO consultas
-    (`nombre`, `apellido`,`email`, `telefono`,`mensaje`) 
-    VALUES 
-    ('$nombre', '$apellido','$email', '$telefono','$mensaje')";
-     $resultado = mysqli_query($conexion, $consulta_insert);
-    if ($resultado) {
-      $alert='<div class="alert alert-success mx-auto w-50 text-center alert-dismissible fade show" role="alert" style="z-index:900; height:50px;width:300px;position:absolute;top:0;bottom:0;right:0;left:0;margin:auto;">
-      <strong>EXITO!</strong> YA SE AGREGO CORRECTAMENTE
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-    } 
-  }
 session_start();
-if (isset($_GET['page'])) {
-} else if (!isset($_SESSION['token-usuario'])) {
-  header('Location: admin/login.php');
-  exit;
+include "admin/app/items/DB.php";
+
+$alert="";
+
+/* crea un registro de consulta en la BD */
+if (isset($_POST['agregar-consulta'])) {
+  $nombre = $_POST['nombre'];
+  $apellido = $_POST['apellido'];
+  $email = $_POST['email'];
+  $telefono = $_POST['telefono'];
+  $mensaje = $_POST['mensaje'];
+  $consulta_insert = "INSERT INTO consultas
+  (`nombre`, `apellido`,`email`, `telefono`,`mensaje`) 
+  VALUES 
+  ('$nombre', '$apellido','$email', '$telefono','$mensaje')";
+    $resultado = mysqli_query($conexion, $consulta_insert);
+  if ($resultado) {
+    $alert='<div class="alert alert-success mx-auto w-50 text-center alert-dismissible fade show" role="alert" style="z-index:900; height:50px;width:300px;position:absolute;top:0;bottom:0;right:0;left:0;margin:auto;">
+    <strong>EXITO!</strong> YA SE AGREGO CORRECTAMENTE
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+  } 
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />

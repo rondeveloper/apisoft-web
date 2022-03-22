@@ -179,7 +179,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_proyectos);
 <script>
 function mostrar_datos_proyecto_modal_editar(id_proyecto) {
       proyecto_body_modal_editar = document.getElementById('body_modal_editar_proyecto')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.proyecto.editar.php?codigo_proyecto=' + id_proyecto)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.proyecto.editar.php?codigo_proyecto=' + id_proyecto)
         .then(response => response.text())
         .then(data => {
           proyecto_body_modal_editar.innerHTML = data
@@ -188,7 +188,7 @@ function mostrar_datos_proyecto_modal_editar(id_proyecto) {
 
     function mostrar_datos_proyecto_modal_eliminar(id_proyecto) {
       proyecto_body_modal_eliminar = document.getElementById('body_modal_eliminar_proyecto')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.proyecto.eliminar.php?codigo_proyecto=' + id_proyecto)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.proyecto.eliminar.php?codigo_proyecto=' + id_proyecto)
         .then(response => response.text())
         .then(data => {
           proyecto_body_modal_eliminar.innerHTML = data
@@ -196,7 +196,7 @@ function mostrar_datos_proyecto_modal_editar(id_proyecto) {
     }
     function proyecto_datos_modal_agregar() {
       proyecto_body_modal_agregar = document.getElementById('proyecto_datos_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.proyecto.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.proyecto.agregar.php')
         .then(response => response.text())
         .then(data => {
           proyecto_body_modal_agregar.innerHTML = data

@@ -219,7 +219,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_cotizacion);
 <script>
     function mostrar_datos_modal_editar(id_cotizacion) {
       body_modal_editar = document.getElementById('body_modal_editar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.cotizacion.editar.php?codigo_cotizacion=' + id_cotizacion)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.cotizacion.editar.php?codigo_cotizacion=' + id_cotizacion)
         .then(response => response.text())
         .then(data => {
           body_modal_editar.innerHTML = data
@@ -228,7 +228,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_cotizacion);
 
     function mostrar_datos_modal_eliminar(id_cotizacion) {
       body_modal_eliminar = document.getElementById('body_modal_eliminar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.cotizacion.eliminar.php?codigo_cotizacion=' + id_cotizacion)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.cotizacion.eliminar.php?codigo_cotizacion=' + id_cotizacion)
         .then(response => response.text())
         .then(data => {
           body_modal_eliminar.innerHTML = data
@@ -237,7 +237,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_cotizacion);
 
     function datos_modal_agregar() {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.cotizacion.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.cotizacion.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data
@@ -245,7 +245,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_cotizacion);
     }
     function datos_modal_agregar_consulta_servicio(id_cliente) {
       body_modal_agregar = document.getElementById('body_modal_agregar_consulta_servicio')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.consulta.servicio.agregar.php?codigo_cliente='+id_cliente)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.consulta.servicio.agregar.php?codigo_cliente='+id_cliente)
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

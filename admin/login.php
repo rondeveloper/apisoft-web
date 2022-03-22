@@ -96,7 +96,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             </div>
         </div>
     </div>
-    <div class="text-center"><a href="<?=$_dominio?>apisoft-web/index.php?page=access" class="text-decoration-none">GO APISOFT</a></div>
+    <div class="text-center"><a href="<?=$_dominio?>index.php?page=access" class="text-decoration-none">GO APISOFT</a></div>
     <div class="text-center fw-bolder text-light pt-5 mt-5">Para la Pasantia Formal de ApiSoft el Usuario:ron; Password:apisoft</div>
     </main>
     <div class="slider-box">

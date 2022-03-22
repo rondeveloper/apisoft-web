@@ -172,7 +172,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_proye
 <script>
     function mostrar_datos_modal_editar(id_seguimiento_proyecto) {
       body_modal_editar = document.getElementById('body_modal_editar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.seguimiento.proyecto.editar.php?codigo_seguimiento_proyecto=' + id_seguimiento_proyecto)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.seguimiento.proyecto.editar.php?codigo_seguimiento_proyecto=' + id_seguimiento_proyecto)
         .then(response => response.text())
         .then(data => {
           body_modal_editar.innerHTML = data
@@ -181,7 +181,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_proye
 
     function mostrar_datos_modal_eliminar(id_seguimiento_proyecto) {
       body_modal_eliminar = document.getElementById('body_modal_eliminar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.seguimiento.proyecto.eliminar.php?codigo_seguimiento_proyecto=' + id_seguimiento_proyecto)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.seguimiento.proyecto.eliminar.php?codigo_seguimiento_proyecto=' + id_seguimiento_proyecto)
         .then(response => response.text())
         .then(data => {
           body_modal_eliminar.innerHTML = data
@@ -190,7 +190,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_proye
 
     function datos_modal_agregar() {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.seguimiento.proyecto.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.seguimiento.proyecto.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

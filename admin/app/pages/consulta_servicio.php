@@ -172,7 +172,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_consulta_servicio
 <script>
     function mostrar_datos_modal_editar(id_consulta_servicio) {
       body_modal_editar = document.getElementById('body_modal_editar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.consulta.servicio.editar.php?codigo_consulta_servicio=' + id_consulta_servicio)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.consulta.servicio.editar.php?codigo_consulta_servicio=' + id_consulta_servicio)
         .then(response => response.text())
         .then(data => {
           body_modal_editar.innerHTML = data
@@ -181,7 +181,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_consulta_servicio
 
     function mostrar_datos_modal_eliminar(id_consulta_servicio) {
       body_modal_eliminar = document.getElementById('body_modal_eliminar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.consulta.servicio.eliminar.php?codigo_consulta_servicio=' + id_consulta_servicio)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.consulta.servicio.eliminar.php?codigo_consulta_servicio=' + id_consulta_servicio)
         .then(response => response.text())
         .then(data => {
           body_modal_eliminar.innerHTML = data
@@ -190,7 +190,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_consulta_servicio
 
     function datos_modal_agregar() {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.consulta.servicio.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.consulta.servicio.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

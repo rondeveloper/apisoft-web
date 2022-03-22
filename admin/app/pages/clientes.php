@@ -299,7 +299,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
 <script>
   function mostrar_datos_cliente_modal_editar(id_cliente) {
     cliente_body_modal_editar = document.getElementById('body_modal_editar_cliente')
-    fetch('<?= $_dominio ?>apisoft-web/admin/app/ajax/ajax.cliente.editar.php?codigo_cliente=' + id_cliente)
+    fetch('<?= $_dominio ?>admin/app/ajax/ajax.cliente.editar.php?codigo_cliente=' + id_cliente)
       .then(response => response.text())
       .then(data => {
         cliente_body_modal_editar.innerHTML = data
@@ -308,7 +308,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
 
   function mostrar_datos_cliente_modal_eliminar(id_cliente) {
     cliente_body_modal_eliminar = document.getElementById('body_modal_eliminar_cliente')
-    fetch('<?= $_dominio ?>apisoft-web/admin/app/ajax/ajax.cliente.eliminar.php?codigo_cliente=' + id_cliente)
+    fetch('<?= $_dominio ?>admin/app/ajax/ajax.cliente.eliminar.php?codigo_cliente=' + id_cliente)
       .then(response => response.text())
       .then(data => {
         cliente_body_modal_eliminar.innerHTML = data
@@ -317,7 +317,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
 
   function cliente_datos_modal_agregar() {
     cliente_body_modal_agregar = document.getElementById('body_modal_agregar_cliente')
-    fetch('<?= $_dominio ?>apisoft-web/admin/app/ajax/ajax.cliente.agregar.php')
+    fetch('<?= $_dominio ?>admin/app/ajax/ajax.cliente.agregar.php')
       .then(response => response.text())
       .then(data => {
         cliente_body_modal_agregar.innerHTML = data
@@ -326,7 +326,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
 
   function proyecto_datos_modal_agregar(id_cliente) {
     proyecto_body_modal_agregar = document.getElementById('proyecto_datos_modal_agregar')
-    fetch('<?= $_dominio ?>apisoft-web/admin/app/ajax/ajax.proyecto.agregar.php?id-cliente='+id_cliente)
+    fetch('<?= $_dominio ?>admin/app/ajax/ajax.proyecto.agregar.php?id-cliente='+id_cliente)
       .then(response => response.text())
       .then(data => {
         proyecto_body_modal_agregar.innerHTML = data
@@ -334,7 +334,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
   }
   function datos_modal_agregar(id_cliente) {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.servicio.agregar.php?id-cliente='+id_cliente)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.servicio.agregar.php?id-cliente='+id_cliente)
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data
@@ -342,7 +342,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
     }
     function datos_modal_agregar_plan() {
       body_modal_agregar_plan = document.getElementById('body_modal_agregar_plan')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.plan.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.plan.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar_plan.innerHTML = data

@@ -10,7 +10,7 @@ include 'variables.php';
       if (isset($_GET['tog'])) {
       ?>
         <li>
-          <a class="dropdown-item text-primary" href="<?= $_dominio ?>apisoft-web/admin/index.php" type="button" class="btn btn-primary btn-lg px-5"><i class='bx bx-cog bx-flashing fs-3'></i> Administrador de Usuario </a>
+          <a class="dropdown-item text-primary" href="<?= $_dominio ?>admin/index.php" type="button" class="btn btn-primary btn-lg px-5"><i class='bx bx-cog bx-flashing fs-3'></i> Administrador de Usuario </a>
         </li>
         <li>
           <a class="dropdown-item text-danger" href="#" onclick="cerrar_session()"><i class='bx bxs-exit bx-flashing fs-3'></i> CERRAR SESION</a>
@@ -19,7 +19,7 @@ include 'variables.php';
       } else {
       ?>
         <li>
-          <a class="dropdown-item text-primary" href="<?=$_dominio?>apisoft-web/admin/login.php" type="button" class="btn btn-primary btn-lg px-5"><i class='bx bx-cog bx-flashing fs-3'></i> Administrador de Usuario </a>
+          <a class="dropdown-item text-primary" href="<?=$_dominio?>admin/login.php" type="button" class="btn btn-primary btn-lg px-5"><i class='bx bx-cog bx-flashing fs-3'></i> Administrador de Usuario </a>
         </li>
       <?php
       }
@@ -42,7 +42,7 @@ include 'variables.php';
 </header>
 <script>
         function cerrar_session() {
-            fetch('<?= $_dominio ?>apisoft-web/admin/app/ajax/ajax.app.cerrar.php')
+            fetch('<?= $_dominio ?>admin/app/ajax/ajax.app.cerrar.php')
                 .then(response => response.text())
                 .then(data => {
                     window.location = 'admin/login.php'

@@ -44,7 +44,7 @@ if (!isset($_SESSION['token-usuario'])) {
       <div class="logo-apisoft"></div>
     
       <div class="dropdown d-none d-md-block">
-        <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="../assets/img/mario-casas-3" alt="MA"/>
+        <img class="d-none d-lg-inline rounded-circle ml-1" width="32px" src="../assets/img/mario-casas-3.jpg" alt="MA"/>
         <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
           Ronaldo Alcon
         </button>
@@ -62,14 +62,14 @@ if (!isset($_SESSION['token-usuario'])) {
             ?>
 
             <div class="pl-3 d-none d-md-block position-fixed" style="bottom: 0px">
-            <a href="<?=$_dominio?>apisoft-web/index.php?tog=palanca"><span class="oi oi-account-logout mr-2"></span>GO APISOFT
+            <a href="<?=$_dominio?>index.php?tog=palanca"><span class="oi oi-account-logout mr-2"></span>GO APISOFT
             </div></a>
             
         </div>
         <div class="col-lg-10 col-md-9 p-4">
         <script>
         function cerrar_session() {
-            fetch('<?= $_dominio ?>apisoft-web/admin/app/ajax/ajax.app.cerrar.php')
+            fetch('<?= $_dominio ?>admin/app/ajax/ajax.app.cerrar.php')
                 .then(response => response.text())
                 .then(data => {
                     window.location = 'login.php'

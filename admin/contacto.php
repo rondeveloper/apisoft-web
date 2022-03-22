@@ -127,7 +127,7 @@ $alert="";
     <script>
     function datos_modal_agregar() {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>apisoft-web/admin/app/ajax/ajax.consulta.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.consulta.agregar.php')
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

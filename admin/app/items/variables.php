@@ -1,4 +1,4 @@
 <?php
 
-$_dominio = "http://localhost/";
+$_dominio = "http://localhost/apisoft-web/";
 
