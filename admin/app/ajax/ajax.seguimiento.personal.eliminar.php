@@ -32,6 +32,20 @@ return confirm('Esta seguro de eliminar el registro?')
                     <label for="inputAddress" class="form-label">Actividad Actual</label>
                     <input value="<?=$datos_seguimiento_personal['actividad_actual']?>" type="text" class="form-control" id="inputAddress" placeholder="Actividad Actual" name="actividad-actual" />
                   </div>
+                  <?php
+                  $estado_uno="";
+          $estado=$datos_seguimiento_personal['estado'];
+          if($estado=='realizado'){
+            $estado_uno="selected";
+          }
+          ?>
+          <div class="col-md-6">
+            <label for="select" class="form-label">Estado</label>
+            <select class="form-select" id="select" name="estado" aria-label="Default select example">
+              <option value="no realizado">no realizado</option>
+              <option  <?=$estado_uno?>  value="realizado">realizado</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="card-footer bg-transparent border-danger">

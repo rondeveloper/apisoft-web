@@ -102,7 +102,7 @@
     }
   }?>
 <div class="d-flex justify-content-between">
-    <h4 class="text-primary fw-bolder fs-2 my-0">Servicios <i class='bx bx-group nav_icon bx-flashing fs-3'></i></h4>
+    <h4 class="text-primary fw-bolder fs-2 my-0">Servicios <i class='bx bx-check bx-flashing fs-3' ></i></h4>
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#servicios" onclick="datos_modal_agregar_servicio()">
       Agregar Servicio
     </button>
@@ -125,7 +125,7 @@
 $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicios);
 ?>
 <hr>
-<table class="table table-striped table-light table-hover table-bordered">
+<table id="mytable" class="table table-striped table-light table-hover table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -244,4 +244,9 @@ $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicio
           body_modal_agregar.innerHTML = data
         })
     }
+</script>
+<script>
+  $(document).ready(function() {
+    $('#mytable').DataTable();
+  });
 </script>

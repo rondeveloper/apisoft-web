@@ -1,7 +1,10 @@
 
 <?php
 session_start();
+
 include "app/items/variables.php";
+include "app/items/DB.php";
+
 if (!isset($_SESSION['token-usuario'])) {
     header('Location: login.php');
     exit;
@@ -16,7 +19,13 @@ if (!isset($_SESSION['token-usuario'])) {
   <title>ADMINISTRACION DE USUARIO</title>
   <link rel="stylesheet" href="assets/polished.min.css">
   <link rel="stylesheet" href="assets/iconic/css/open-iconic-bootstrap.min.css">
-  <link rel="icon" href="assets/polished-logo-small.png">
+  <link rel="shortcut icon" type="image/icon" href="../assets/img/logo-apisoft.png"/>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+  
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
     .logo-apisoft{
@@ -36,6 +45,17 @@ if (!isset($_SESSION['token-usuario'])) {
     }
 
   </style>
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  
+  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </head>
 
 <body>

@@ -1,13 +1,14 @@
 <?php
   include "app/items/DB.php";
   if (isset($_POST['agregar-seguimiento_personal'])) {
+    $estado = $_POST['estado'];
     $id_personal = $_POST['id-personal'];
     $id_proyecto_actual = $_POST['id-proyecto-actual'];
     $actividad_actual = $_POST['actividad-actual'];
     $consulta_insert_seguimiento_personal = "INSERT INTO seguimiento_personal
-    (`id_personal`, `id_proyecto_actual`, `actividad_actual`) 
+    (`id_personal`, `id_proyecto_actual`, `actividad_actual`,`estado`) 
     VALUES 
-    ('$id_personal', '$id_proyecto_actual', '$actividad_actual')";
+    ('$id_personal', '$id_proyecto_actual', '$actividad_actual','$estado')";
      $resultado = mysqli_query($conexion, $consulta_insert_seguimiento_personal);
     if ($resultado) {
   ?>
@@ -25,13 +26,14 @@
     }
   }
   if (isset($_POST['editar-seguimiento_personal'])) {
+    $estado = $_POST['estado'];
     $id_seguimiento_personal = $_POST['id-seguimiento-personal'];
     $id_personal = $_POST['id-personal'];
     $id_proyecto_actual = $_POST['id-proyecto-actual'];
     $actividad_actual = $_POST['actividad-actual'];
     $consulta_update_seguimiento_personal = "UPDATE seguimiento_personal SET  
     `id_personal`='$id_personal', `id_proyecto_actual`='$id_proyecto_actual',
-     `actividad_actual`='$actividad_actual'
+     `actividad_actual`='$actividad_actual',`estado`='$estado'
     WHERE `id_seguimiento_personal`='$id_seguimiento_personal' LIMIT 1 ";
     $resultado = mysqli_query($conexion,$consulta_update_seguimiento_personal);
     if ($resultado) {
@@ -69,7 +71,7 @@
     }
   }?>
 <div class="d-flex justify-content-between">
-    <h4 class="text-primary fw-bolder fs-2 my-0">Seguimiento Personal <i class='bx bx-group nav_icon bx-flashing fs-3'></i></h4>
+    <h4 class="text-primary fw-bolder fs-2 my-0">Seguimiento Personal <i class='bx bx-navigation bx-flashing fs-3' ></i></h4>
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="datos_modal_agregar()">
       Agregar Seguimiento Personal
     </button>
@@ -88,11 +90,11 @@
     </div>
   </div>
   <?php
- $consulta_select_seguimiento_personal= "SELECT * FROM seguimiento_personal ORDER BY `ID_seguimiento_personal` ASC";
+ $consulta_select_seguimiento_personal= "SELECT * FROM seguimiento_personal ORDER BY `id_seguimiento_personal` ASC";
 $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_personal);
 ?>
 <hr>
-<table class="table table-striped table-light table-hover table-bordered">
+<table id="mytable" class="table table-striped table-light table-hover table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -100,6 +102,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_perso
       <th scope="col">Id Personal</th>
       <th scope="col">Id Proyecto Actual</th>
       <th scope="col">Actividad Actual</th>
+      <th scope="col">Estado</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
@@ -114,6 +117,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_perso
         <td><?php echo $datos_array['id_personal']; ?></td>
         <td><?php echo $datos_array['id_proyecto_actual']; ?></td>
         <td><?php echo $datos_array['actividad_actual']; ?></td>
+        <td><?php echo $datos_array['estado']; ?></td>
         <td class="">
           <div class="d-flex ">
           <button onclick="mostrar_datos_modal_editar(<?php echo $datos_array['id_seguimiento_personal']; ?>)" class="btn btn-outline-info" id="btn_editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar">
@@ -182,4 +186,9 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_perso
           body_modal_agregar.innerHTML = data
         })
     }
+</script>
+<script>
+  $(document).ready(function() {
+    $('#mytable').DataTable();
+  });
 </script>

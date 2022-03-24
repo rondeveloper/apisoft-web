@@ -156,4 +156,6 @@ window.addEventListener("scroll",()=>{
     sbg_12.classList.remove("sbg-12")
   }
 })
-
+$(document).ready( function () {
+  $('#mytable').DataTable();
+} );

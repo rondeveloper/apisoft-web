@@ -1,6 +1,7 @@
 <?php
   include "app/items/DB.php";
   if (isset($_POST['agregar-seguimiento_proyecto'])) {
+    $estado = $_POST['estado'];
     $id_proyecto = $_POST['id-proyecto'];
     $id_encargado = $_POST['id-encargado'];
     $id_programadores = $_POST['id-programadores'];
@@ -8,9 +9,9 @@
     $tareas_final = $_POST['tareas-final'];
     $detalle_proyecto = $_POST['detalle-proyecto'];
     $consulta_insert_seguimiento_proyecto = "INSERT INTO seguimiento_proyectos
-    (`id_proyecto`, `id_encargado`, `id_programadores`, `tareas_inicio`, `tareas_final`, `detalle_proyecto`) 
+    (`id_proyecto`, `id_encargado`, `id_programadores`, `tareas_inicio`, `tareas_final`, `detalle_proyecto`,`estado`) 
     VALUES 
-    ('$id_proyecto', '$id_encargado', '$id_programadores', '$tareas_inicio', '$tareas_final', '$detalle_proyecto')";
+    ('$id_proyecto', '$id_encargado', '$id_programadores', '$tareas_inicio', '$tareas_final', '$detalle_proyecto','$estado')";
      $resultado = mysqli_query($conexion, $consulta_insert_seguimiento_proyecto);
     if ($resultado) {
   ?>
@@ -28,6 +29,7 @@
     }
   }
   if (isset($_POST['editar-seguimiento_proyecto'])) {
+    $estado = $_POST['estado'];
     $id_seguimiento_proyecto = $_POST['id-seguimiento-proyecto'];
     $id_proyecto = $_POST['id-proyecto'];
     $id_encargado = $_POST['id-encargado'];
@@ -38,7 +40,7 @@
     $consulta_update_seguimiento_proyecto = "UPDATE seguimiento_proyectos SET  
     `id_proyecto`='$id_proyecto', `id_encargado`='$id_encargado',
      `id_programadores`='$id_programadores', `tareas_inicio`='$tareas_inicio', 
-     `tareas_final`='$tareas_final', `detalle_proyecto`='$detalle_proyecto'
+     `tareas_final`='$tareas_final', `detalle_proyecto`='$detalle_proyecto',`estado`='$estado'
     WHERE `id_seguimiento_proyecto`='$id_seguimiento_proyecto' LIMIT 1 ";
     $resultado = mysqli_query($conexion,$consulta_update_seguimiento_proyecto);
     if ($resultado) {
@@ -76,7 +78,7 @@
     }
   }?>
 <div class="d-flex justify-content-between">
-    <h4 class="text-primary fw-bolder fs-2 my-0">Seguimiento Proyectos <i class='bx bx-group nav_icon bx-flashing fs-3'></i></h4>
+    <h4 class="text-primary fw-bolder fs-2 my-0">Seguimiento Proyectos <i class='bx bx-check-circle bx-flashing fs-3' ></i></h4>
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="datos_modal_agregar()">
       Agregar Seguimiento Proyecto
     </button>
@@ -99,7 +101,7 @@
 $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_proyecto);
 ?>
 <hr>
-<table class="table table-striped table-light table-hover table-bordered">
+<table id="mytable" class="table table-striped table-light table-hover table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -110,6 +112,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_proye
       <th scope="col">Tareas Inicio</th>
       <th scope="col">Tareas Final</th>
       <th scope="col">Detalle Proyecto</th>
+      <th scope="col">Estado</th>
       <th scope="col">Acciones</th>
     </tr>
   </thead>
@@ -127,6 +130,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_proye
         <td><?php echo $datos_array['tareas_inicio']; ?></td>
         <td><?php echo $datos_array['tareas_final']; ?></td>
         <td><?php echo $datos_array['detalle_proyecto']; ?></td>
+        <td><?php echo $datos_array['estado']; ?></td>
 
         <td class="">
           <div class="d-flex ">
@@ -196,4 +200,9 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_seguimiento_proye
           body_modal_agregar.innerHTML = data
         })
     }
+</script>
+<script>
+  $(document).ready(function() {
+    $('#mytable').DataTable();
+  });
 </script>

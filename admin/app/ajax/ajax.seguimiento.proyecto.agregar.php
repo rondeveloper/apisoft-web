@@ -45,6 +45,7 @@ $id_proyecto = $proyecto['id_proyecto'];
               </div>
               <div class="card-footer bg-transparent border-primary">
                 <div class="col-12">
+                  <input type="hidden" name="estado" value="no realizado"/>
                   <input type="hidden" name="agregar-seguimiento_proyecto" value="true" />
                   <button type="submit" class="btn btn-primary mx-auto d-block">
                     Agregar Seguimiento Proyecto

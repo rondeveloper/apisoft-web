@@ -1,4 +1,6 @@
 <?php
+$id_cliente="";
+$readonly="";
  if(isset($_GET['codigo_cliente'])){
    $id_cliente=$_GET["codigo_cliente"];
    $readonly='readonly';
@@ -39,6 +41,7 @@
               </div>
               <div class="card-footer bg-transparent border-primary">
                 <div class="col-12">
+                <input type="hidden" name="estado" value="no realizado"/>
                   <input type="hidden" name="agregar-consulta_servicio" value="true" />
                   <button type="submit" class="btn btn-primary mx-auto d-block">
                     Agregar Consulta Servicio

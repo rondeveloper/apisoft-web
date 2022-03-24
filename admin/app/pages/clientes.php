@@ -157,7 +157,7 @@ if (isset($_POST['agregar-plan'])) {
   }
 }?>
 <div class="d-flex justify-content-between">
-  <h4 class="text-primary fw-bolder fs-2 my-0">Clientes <i class='bx bx-cut bx-flashing fs-3'></i></h4>
+  <h4 class="text-primary fw-bolder fs-2 my-0">Clientes <i class='bx bxl-patreon bx-flashing fs-3' ></i></h4>
   <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal-6" onclick="cliente_datos_modal_agregar()">
     Agregar Cliente
   </button>
@@ -180,7 +180,7 @@ $consulta_select_clientes = "SELECT * FROM clientes ORDER BY `id_clientes` ASC";
 $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
 ?>
 <hr>
-<table class="table table-striped table-light table-hover table-bordered">
+<table id="mytable" class="table table-striped table-light table-hover table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -210,14 +210,18 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
         <td><?php echo $datos_cliente['fecha']; ?></td>
 
         <td class="">
-          <div class="d-flex flex-column">
-            <button onclick="mostrar_datos_cliente_modal_editar(<?php echo $datos_cliente['id_clientes']; ?>)" class="btn btn-outline-info" id="btn_editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar-cliente">
+          <div class="d-flex ">
+          <div style="max-width: 100px;
+">  <button onclick="mostrar_datos_cliente_modal_editar(<?php echo $datos_cliente['id_clientes']; ?>)" class="btn btn-sm btn-outline-info" id="btn_editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-editar-cliente">
               <i class='bx bx-edit nav_icon'>Editar</i>
             </button>
-            &nbsp;
-            <button onclick="mostrar_datos_cliente_modal_eliminar(<?php echo $datos_cliente['id_clientes']; ?>)" class="btn btn-outline-danger" id="btn_editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-eliminar-cliente">
+            <button onclick="mostrar_datos_cliente_modal_eliminar(<?php echo $datos_cliente['id_clientes']; ?>)" class="btn btn-sm btn-outline-danger" id="btn_editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-eliminar-cliente">
               <i class='bx bx-trash nav_icon'>Eliminar</i>
-            </button>&nbsp;&nbsp;
+            </button>
+            
+            <button onclick="show_datos_modal_detalle(<?php echo $datos_cliente['id_clientes']; ?>)" class="btn btn-sm btn-outline-secondary" id="btn_editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-detalle">
+              <i class='bx bx-detail nav_icon'>Detalle</i>
+            </button></div><div>
             <button type="button" class="btn btn-sm btn-primary " data-bs-toggle="modal" data-bs-target="#proyecto" onclick="proyecto_datos_modal_agregar(<?php echo $datos_cliente['id_clientes']; ?>)">
               Agregar Proyecto
             </button>
@@ -232,7 +236,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
                   </div>
                 </div>
               </div>
-            </div>&nbsp;
+            </div>
             <button type="button" class="btn btn-sm btn-primary " data-bs-toggle="modal" data-bs-target="#servicios" onclick="datos_modal_agregar(<?php echo $datos_cliente['id_clientes']; ?>)">
               Agregar Servicio
             </button>
@@ -249,7 +253,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
             </div>
           </div>&nbsp;<button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal" data-bs-target="#exampleModal-plan" onclick="datos_modal_agregar_plan()">
       Agregar Plan
-    </button>
+    </button></div>
   </div>
   <div class="modal fade" id="exampleModal-plan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -296,6 +300,23 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="modal-detalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl ">
+    <div class="modal-content">
+      <div class="modal-header p-0 border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel"> &nbsp;Detalles</h5>
+        <button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body  py-0" id="body_modal_detalle"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary mx-auto" data-bs-dismiss="modal" style="color:#6c757d;">Salir</button>
+    
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   function mostrar_datos_cliente_modal_editar(id_cliente) {
     cliente_body_modal_editar = document.getElementById('body_modal_editar_cliente')
@@ -348,4 +369,20 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
           body_modal_agregar_plan.innerHTML = data
         })
     }
+    function show_datos_modal_detalle(codigo_cliente){
+    body_modal_editar = document.getElementById('body_modal_detalle')
+
+    fetch('<?=$_dominio?>admin/app/ajax/ajax.detalles.cliente.php?codigo_cliente='+codigo_cliente)
+      .then(response => response.text())
+      .then(data => {
+        body_modal_editar.innerHTML = data
+
+      })
+  }
+
+</script>
+<script>
+$(document).ready( function () {
+    $('#mytable').DataTable();
+} );
 </script>

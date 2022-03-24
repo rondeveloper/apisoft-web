@@ -416,16 +416,16 @@ html {
   margin: 4px auto 0;
 }
 .section-trabajo {
-  background-image: url(img/Surface-Laptop-Go.jpg);
-  height: 400px;
-  background-size: contain;
+  background-image: url(img/pv.jpg);
+  height: 380px;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 .section-trabajo iframe {
-  height: 234px;
-  margin-top: 50px;
-  margin-left: 11vmax;
-  width: 340px;
+  height: 300px;
+  margin-top: 37px;
+  margin-left: 9vmax;
+  width: 400px;
 }
 .section-portafolio-titulo {
   text-align: center;
@@ -1579,7 +1579,7 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .inf-imagen{
   background-image: url("img/llamanos.jpg");
-  background-size: contain;
+  background-size: 100% 100%;
   height: 300px;
 }
 .inf-contenido h2{
@@ -1592,12 +1592,12 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .inf-imagen-2{
   background-image: url("img/escribenos.jpg");
-  background-size: contain;
+  background-size: 100% 100%;
   height: 300px;
 }
 .inf-imagen-3{
   background-image: url("img/visitanos.jpg");
-  background-size: contain;
+  background-size: 100% 100%;
   height: 300px;
 }
 .empezar-text{

@@ -16,34 +16,47 @@ return confirm('Esta seguro de eliminar el registro?')
 
       <div class="card-body text-danger">
         <div class="row">
-        <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Id Seguimiento Proyecto</label>
-                    <input value="<?=$datos_seguimiento_proyecto['id_seguimiento_proyecto']?>" placeholder="Id Seguimiento Proyecto" type="number" class="form-control" id="inputPassword4" name="id-seguimiento-proyecto" required />
-                  </div>
-        <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Id Proyecto</label>
-                    <input value="<?=$datos_seguimiento_proyecto['id_proyecto']?>" placeholder="Id Proyecto" type="number" class="form-control" id="inputPassword4" name="id-proyecto" required />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputAddress" class="form-label">Id Encargado</label>
-                    <input value="<?=$datos_seguimiento_proyecto['id_encargado']?>" type="number" class="form-control" id="inputAddress" placeholder="Id Encargado" name="id-encargado" />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputAddress" class="form-label">Id Programadores</label>
-                    <input value="<?=$datos_seguimiento_proyecto['id_programadores']?>" type="text" class="form-control" id="inputAddress" placeholder="Id Programadores" name="id-programadores" />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputAddress" class="form-label">Tareas Inicio</label>
-                    <input value="<?=$datos_seguimiento_proyecto['tareas_inicio']?>" type="text" class="form-control" id="inputAddress" placeholder="Tareas Inicio" name="tareas-inicio" required />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputAddress" class="form-label">Tareas Final</label>
-                    <input value="<?=$datos_seguimiento_proyecto['tareas_final']?>" type="text" class="form-control" id="inputAddress" placeholder="Tareas Final" name="tareas-final" />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputAddress2" class="form-label">Detalle Proyecto</label>
-                    <input value="<?=$datos_seguimiento_proyecto['detalle_proyecto']?>" type="text" size="11" class="form-control" id="inputAddress2" placeholder="Detalle Proyecto" name="detalle-proyecto" required />
-                  </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Id Seguimiento Proyecto</label>
+            <input value="<?= $datos_seguimiento_proyecto['id_seguimiento_proyecto'] ?>" placeholder="Id Seguimiento Proyecto" type="number" class="form-control" id="inputPassword4" name="id-seguimiento-proyecto" required />
+          </div>
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Id Proyecto</label>
+            <input value="<?= $datos_seguimiento_proyecto['id_proyecto'] ?>" placeholder="Id Proyecto" type="number" class="form-control" id="inputPassword4" name="id-proyecto" required />
+          </div>
+          <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Id Encargado</label>
+            <input value="<?= $datos_seguimiento_proyecto['id_encargado'] ?>" type="number" class="form-control" id="inputAddress" placeholder="Id Encargado" name="id-encargado" />
+          </div>
+          <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Id Programadores</label>
+            <input value="<?= $datos_seguimiento_proyecto['id_programadores'] ?>" type="text" class="form-control" id="inputAddress" placeholder="Id Programadores" name="id-programadores" />
+          </div>
+          <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Tareas Inicio</label>
+            <input value="<?= $datos_seguimiento_proyecto['tareas_inicio'] ?>" type="text" class="form-control" id="inputAddress" placeholder="Tareas Inicio" name="tareas-inicio" required />
+          </div>
+          <div class="col-md-6">
+            <label for="inputAddress" class="form-label">Tareas Final</label>
+            <input value="<?= $datos_seguimiento_proyecto['tareas_final'] ?>" type="text" class="form-control" id="inputAddress" placeholder="Tareas Final" name="tareas-final" />
+          </div>
+          <div class="col-md-6">
+            <label for="inputAddress2" class="form-label">Detalle Proyecto</label>
+            <input value="<?= $datos_seguimiento_proyecto['detalle_proyecto'] ?>" type="text" size="11" class="form-control" id="inputAddress2" placeholder="Detalle Proyecto" name="detalle-proyecto" required />
+          </div>
+          <?php                            $estado_uno="";
+          $estado=$datos_seguimiento_proyecto['estado'];
+          if($estado=='realizado'){
+            $estado_uno="selected";
+          }
+          ?>
+          <div class="col-md-6">
+            <label for="select" class="form-label">Estado</label>
+            <select class="form-select" id="select" name="estado" aria-label="Default select example">
+              <option value="no realizado">no realizado</option>
+              <option  <?=$estado_uno?>  value="realizado">realizado</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="card-footer bg-transparent border-danger">
