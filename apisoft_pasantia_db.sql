@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 22-03-2022 a las 03:34:54
+-- Tiempo de generación: 24-03-2022 a las 22:22:25
 -- Versión del servidor: 5.7.19
 -- Versión de PHP: 7.1.9
 
@@ -96,21 +96,21 @@ CREATE TABLE IF NOT EXISTS `consulta_servicio` (
   `id_programadores` text NOT NULL,
   `id_encargado` int(11) NOT NULL,
   `observacion_costo_servicio` text NOT NULL,
+  `estado` text NOT NULL,
   PRIMARY KEY (`id_consulta_servicio`),
   KEY `id_servicio` (`id_servicio`),
   KEY `id_cliente` (`id_cliente`),
   KEY `id_proyecto` (`id_proyecto`),
   KEY `id_encargado` (`id_encargado`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `consulta_servicio`
 --
 
-INSERT INTO `consulta_servicio` (`id_consulta_servicio`, `id_servicio`, `id_cliente`, `id_proyecto`, `id_programadores`, `id_encargado`, `observacion_costo_servicio`) VALUES
-(2, 1, 1, 1, '1-2', 1, 'se recibio el pago '),
-(3, 2, 2, 2, '2-1', 2, 'se recibio el pago '),
-(4, 1, 1, 1, '1-2', 1, 'se recibio el pago ');
+INSERT INTO `consulta_servicio` (`id_consulta_servicio`, `id_servicio`, `id_cliente`, `id_proyecto`, `id_programadores`, `id_encargado`, `observacion_costo_servicio`, `estado`) VALUES
+(2, 1, 1, 1, '1-2', 1, 'se recibio el pago ', 'realizado'),
+(3, 2, 2, 2, '2-1', 2, 'se recibio el pago ', 'no realizado');
 
 -- --------------------------------------------------------
 
@@ -246,19 +246,19 @@ CREATE TABLE IF NOT EXISTS `seguimiento_personal` (
   `id_personal` int(11) NOT NULL,
   `id_proyecto_actual` int(11) NOT NULL,
   `actividad_actual` text NOT NULL,
+  `estado` text NOT NULL,
   PRIMARY KEY (`id_seguimiento_personal`),
   KEY `id_personal` (`id_personal`,`id_proyecto_actual`),
   KEY `id_proyecto_actual` (`id_proyecto_actual`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `seguimiento_personal`
 --
 
-INSERT INTO `seguimiento_personal` (`id_seguimiento_personal`, `id_personal`, `id_proyecto_actual`, `actividad_actual`) VALUES
-(3, 1, 1, 'frontend'),
-(4, 1, 1, 'backend'),
-(5, 2, 2, 'fullstack');
+INSERT INTO `seguimiento_personal` (`id_seguimiento_personal`, `id_personal`, `id_proyecto_actual`, `actividad_actual`, `estado`) VALUES
+(3, 1, 1, 'frontend', 'no realizado'),
+(5, 2, 2, 'fullstack', 'no realizado');
 
 -- --------------------------------------------------------
 
@@ -275,18 +275,18 @@ CREATE TABLE IF NOT EXISTS `seguimiento_proyectos` (
   `tareas_inicio` text NOT NULL,
   `tareas_final` text NOT NULL,
   `detalle_proyecto` text NOT NULL,
+  `estado` text NOT NULL,
   PRIMARY KEY (`id_seguimiento_proyecto`),
   KEY `id_proyecto` (`id_proyecto`),
   KEY `id_encargado` (`id_encargado`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `seguimiento_proyectos`
 --
 
-INSERT INTO `seguimiento_proyectos` (`id_seguimiento_proyecto`, `id_proyecto`, `id_encargado`, `id_programadores`, `tareas_inicio`, `tareas_final`, `detalle_proyecto`) VALUES
-(2, 2, 2, '2-2', 'Entorno Visual', 'Desarrollo', 'En el entorno visual que no este muy lleno la pagina y en el desarrollo no hacerlo muy detallado en el texto'),
-(4, 1, 1, '1', 'entorno visual', 'desarrollo', 'en el entorno visual que no este muy lleno la pagina y en el desarrollo no hacerlo muy detallado en el texto');
+INSERT INTO `seguimiento_proyectos` (`id_seguimiento_proyecto`, `id_proyecto`, `id_encargado`, `id_programadores`, `tareas_inicio`, `tareas_final`, `detalle_proyecto`, `estado`) VALUES
+(2, 2, 2, '2-2', 'Entorno Visual', 'Desarrollo', 'En el entorno visual que no este muy lleno la pagina y en el desarrollo no hacerlo muy detallado en el texto', 'no realizado');
 
 -- --------------------------------------------------------
 
@@ -305,7 +305,7 @@ CREATE TABLE IF NOT EXISTS `servicios` (
   PRIMARY KEY (`id_servicio`),
   KEY `id_proyecto` (`id_proyecto`),
   KEY `id_cliente` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `servicios`
@@ -317,7 +317,8 @@ INSERT INTO `servicios` (`id_servicio`, `id_programadores`, `id_proyecto`, `id_c
 (5, '1-2-1-2', 2, 1, 'desarrollo de software desktop y mobile', 'en el desktop se usara gama de colores claro #ffbfbb para el mobile se usara #fcfcfcc'),
 (6, '8-5', 5, 8, 'desarrollo de software desktop y mobile', 'en el desktop se usara gama de colores claro #dddddcc para el mobile se usara #fcfcfcc'),
 (7, '11', 11, 11, 'desarrollo de software desktop y mobile', 'en el desktop se usara gama de colores claro #eeeeff para el mobile se usara #fcfcfcc'),
-(8, '11', 11, 11, 'desarrollo de software desktop y mobile', 'en el desktop se usara gama de colores claro #eeeeff para el mobile se usara #fcfcfcc');
+(8, '11', 11, 11, 'desarrollo de software desktop y mobile', 'en el desktop se usara gama de colores claro #eeeeff para el mobile se usara #fcfcfcc'),
+(9, '1-2', 2, 2, 'desarrollo de software', 'en el desktop se usara gama de colores claro #ffbfbb para el mobile se usara #fcfcfcc');
 
 -- --------------------------------------------------------
 
