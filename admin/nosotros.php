@@ -20,10 +20,12 @@ rel="stylesheet"
         <div class="conocenos">
             <div class="conocenos-text">CONOCE NUESTRO LIDERAZGO</div>
             <div class="conocenos-text_1">somos expertos en tecnología y líderes que aportan energía, pasión y conocimiento a cada proyecto.</div>
+            <div class="arrow arrow-nosotros">
+          <a href="#nosotros_apisoft"><i class='bx bx-lg bx-arrow-to-bottom bx-fade-up' ></i></a></div>
             
         </div>
     </section>
-    <section>
+    <section id="nosotros_apisoft">
         <div class="keysuccess">
             <div class="keysuccess-text"><div>Las personas que son la clave del éxito</div>
                 <p>Nos sentimos orgullosos cada vez que alguien nuevo se une</p>

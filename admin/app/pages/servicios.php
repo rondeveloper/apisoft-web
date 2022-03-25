@@ -160,7 +160,7 @@ $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicio
           <button onclick="mostrar_datos_modal_eliminar(<?php echo $datos_servicio['id_servicio']; ?>)" class="btn btn-outline-danger" id="btn_editar" type="button" data-bs-toggle="modal" data-bs-target="#modal-eliminar">
             <i class='bx bx-trash nav_icon'>Eliminar</i>
           </button>
-          &nbsp;<button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal" data-bs-target="#exampleplan" onclick="datos_modal_agregar()">
+          &nbsp;<button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal" data-bs-target="#exampleplan" onclick="datos_modal_agregar(<?php echo $datos_servicio['id_cliente']; ?>)">
       Agregar Plan
     </button>
   <div class="modal fade" id="exampleplan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -236,9 +236,9 @@ $resultado_consulta_servicio = mysqli_query($conexion, $consulta_select_servicio
         })
     }
     
-    function datos_modal_agregar() {
+    function datos_modal_agregar(id_cliente) {
       body_modal_agregar = document.getElementById('body_modal_agregar_plan')
-      fetch('<?=$_dominio?>admin/app/ajax/ajax.plan.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.plan.agregar.inner.php?codigo_cliente='+id_cliente)
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

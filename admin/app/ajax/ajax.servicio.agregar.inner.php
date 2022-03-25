@@ -1,3 +1,9 @@
+<?php
+include "../items/DB.php";
+ if(isset($_GET['id-cliente'])){
+   $id_cliente=$_GET["id-cliente"];
+ }
+ ?>
 <form class="row g-3" method="post" action="">
             <div class="card border-primary mb-3 mx-auto" style="max-width: 1000px">
               <div class="card-header bg-transparent border-primary text-primary display-4">
@@ -10,8 +16,20 @@
                     <input type="text" class="form-control" id="inputAddress" placeholder="Id Programadores" name="id-programadores" />
                   </div>
                   <div class="col-md-6">
-                    <label for="inputAddress" class="form-label">Id Proyecto</label>
-                    <input type="number" class="form-control" id="inputAddress" placeholder="Id Proyecto" name="id-proyecto" />
+                    <label for="inputAddress" class="form-label">Proyecto</label>
+                    <select name="id-proyecto" class="form-control">
+                      <?php
+                      $consulta_select_proyectos= "SELECT `id_proyecto`,`proyecto` FROM proyectos WHERE `id_cliente`=$id_cliente";
+                      $resultado_consulta = mysqli_query($conexion, $consulta_select_proyectos);
+                      while($proyecto=mysqli_fetch_array($resultado_consulta)){
+                        $id_proyecto = $proyecto['id_proyecto'];
+                        $nombre_proyecto = $proyecto['proyecto'];
+                        ?>
+                          <option value="<?= $id_proyecto ?>"><?= $nombre_proyecto ?></option>
+                        <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                   <div class="col-md-6">
                     <label for="inputAddress" class="form-label">Id Cliente</label>

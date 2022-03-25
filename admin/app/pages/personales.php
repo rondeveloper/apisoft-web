@@ -76,13 +76,14 @@ if (isset($_POST['eliminar-personal'])) {
 }
 
 if (isset($_POST['agregar-seguimiento_personal'])) {
+  $estado=$_POST['estado'];
   $id_personal = $_POST['id-personal'];
   $id_proyecto_actual = $_POST['id-proyecto-actual'];
   $actividad_actual = $_POST['actividad-actual'];
   $consulta_insert_seguimiento_personal = "INSERT INTO seguimiento_personal
-    (`id_personal`, `id_proyecto_actual`, `actividad_actual`) 
+    (`id_personal`, `id_proyecto_actual`, `actividad_actual`,`estado`) 
     VALUES 
-    ('$id_personal', '$id_proyecto_actual', '$actividad_actual')";
+    ('$id_personal', '$id_proyecto_actual', '$actividad_actual','$estado')";
   $resultado = mysqli_query($conexion, $consulta_insert_seguimiento_personal);
   if ($resultado) {
   ?>
@@ -100,6 +101,7 @@ if (isset($_POST['agregar-seguimiento_personal'])) {
   }
 }
 if (isset($_POST['agregar-seguimiento_proyecto'])) {
+  $estado=$_POST['estado'];
   $id_proyecto = $_POST['id-proyecto'];
   $id_encargado = $_POST['id-encargado'];
   $id_programadores = $_POST['id-programadores'];
@@ -107,9 +109,9 @@ if (isset($_POST['agregar-seguimiento_proyecto'])) {
   $tareas_final = $_POST['tareas-final'];
   $detalle_proyecto = $_POST['detalle-proyecto'];
   $consulta_insert_seguimiento_proyecto = "INSERT INTO seguimiento_proyectos
-    (`id_proyecto`, `id_encargado`, `id_programadores`, `tareas_inicio`, `tareas_final`, `detalle_proyecto`) 
+    (`id_proyecto`, `id_encargado`, `id_programadores`, `tareas_inicio`, `tareas_final`, `detalle_proyecto`,`estado`) 
     VALUES 
-    ('$id_proyecto', '$id_encargado', '$id_programadores', '$tareas_inicio', '$tareas_final', '$detalle_proyecto')";
+    ('$id_proyecto', '$id_encargado', '$id_programadores', '$tareas_inicio', '$tareas_final', '$detalle_proyecto','$estado')";
   $resultado = mysqli_query($conexion, $consulta_insert_seguimiento_proyecto);
   if ($resultado) {
   ?>
@@ -285,7 +287,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_personales);
 
   function datos_modal_agregar_seguimiento_personal(id_personal) {
     body_modal_agregar = document.getElementById('body_modal_agregar_seguimiento_personal')
-    fetch('<?= $_dominio ?>admin/app/ajax/ajax.seguimiento.personal.agregar.php?codigo_personal=' + id_personal)
+    fetch('<?= $_dominio ?>admin/app/ajax/ajax.seguimiento.personal.agregar.inner.php?codigo_personal=' + id_personal)
       .then(response => response.text())
       .then(data => {
         body_modal_agregar.innerHTML = data
@@ -294,7 +296,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_personales);
 
   function datos_modal_agregar_seguimiento_proyecto(id_personal) {
     body_modal_agregar_seguimiento_proyecto = document.getElementById('body_modal_agregar_seguimiento_proyecto')
-    fetch('<?= $_dominio ?>admin/app/ajax/ajax.seguimiento.proyecto.agregar.php?codigo_personal=' + id_personal)
+    fetch('<?= $_dominio ?>admin/app/ajax/ajax.seguimiento.proyecto.agregar.inner.php?codigo_personal=' + id_personal)
       .then(response => response.text())
       .then(data => {
         body_modal_agregar_seguimiento_proyecto.innerHTML = data

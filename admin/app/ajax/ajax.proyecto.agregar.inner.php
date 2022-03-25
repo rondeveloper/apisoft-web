@@ -1,4 +1,10 @@
- <form class="row g-3" method="post" action="">
+ <?php
+ include "../items/DB.php";
+ if(isset($_GET['id-cliente'])){
+   $id_cliente=$_GET["id-cliente"];
+ }
+ ?>
+<form class="row g-3" method="post" action="">
             <div class="card border-primary mb-3 mx-auto" style="max-width: 1000px">
               <div class="card-header bg-transparent border-primary text-primary display-4">
                 Proyecto
@@ -10,8 +16,20 @@
                     <input type="number" class="form-control" id="inputAddress" placeholder="Id Cliente" name="id-cliente" value="<?=$id_cliente?>" />
                   </div>
                   <div class="col-md-6">
-                    <label for="inputAddress" class="form-label">Id Encargado</label>
-                  <input name="id-encargado" placeholder="Id Encargado" type="text" class="form-control" id="inputPassword4" required/>
+                    <label for="inputAddress" class="form-label">Encargado</label>
+                    <select name="id-encargado" class="form-control">
+                      <?php
+                      $consulta = "SELECT `id_personal`,`personal` FROM personales";
+                      $resultado_consulta = mysqli_query($conexion, $consulta);
+                      while($personal=mysqli_fetch_array($resultado_consulta)){
+                        $id_personal = $personal['id_personal'];
+                        $nombre_personal = $personal['personal'];
+                        ?>
+                          <option value="<?= $id_personal ?>"><?= $nombre_personal ?></option>
+                        <?php
+                      }
+                      ?>
+                    </select>
                   </div>
 
                   <div class="col-md-6">

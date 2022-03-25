@@ -251,7 +251,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
                 </div>
               </div>
             </div>
-          </div>&nbsp;<button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal" data-bs-target="#exampleModal-plan" onclick="datos_modal_agregar_plan()">
+          </div>&nbsp;<button type="button" class="btn btn-primary btn-sm " data-bs-toggle="modal" data-bs-target="#exampleModal-plan" onclick="datos_modal_agregar_plan(<?php echo $datos_cliente['id_clientes']; ?>)">
       Agregar Plan
     </button></div>
   </div>
@@ -347,7 +347,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
 
   function proyecto_datos_modal_agregar(id_cliente) {
     proyecto_body_modal_agregar = document.getElementById('proyecto_datos_modal_agregar')
-    fetch('<?= $_dominio ?>admin/app/ajax/ajax.proyecto.agregar.php?id-cliente='+id_cliente)
+    fetch('<?= $_dominio ?>admin/app/ajax/ajax.proyecto.agregar.inner.php?id-cliente='+id_cliente)
       .then(response => response.text())
       .then(data => {
         proyecto_body_modal_agregar.innerHTML = data
@@ -355,15 +355,15 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_clientes);
   }
   function datos_modal_agregar(id_cliente) {
       body_modal_agregar = document.getElementById('body_modal_agregar')
-      fetch('<?=$_dominio?>admin/app/ajax/ajax.servicio.agregar.php?id-cliente='+id_cliente)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.servicio.agregar.inner.php?id-cliente='+id_cliente)
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data
         })
     }
-    function datos_modal_agregar_plan() {
+    function datos_modal_agregar_plan(id_cliente) {
       body_modal_agregar_plan = document.getElementById('body_modal_agregar_plan')
-      fetch('<?=$_dominio?>admin/app/ajax/ajax.plan.agregar.php')
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.plan.agregar.inner.php?codigo_cliente='+id_cliente)
         .then(response => response.text())
         .then(data => {
           body_modal_agregar_plan.innerHTML = data

@@ -482,6 +482,34 @@ line-height: 40px;
   font-size: 40px;
   font-weight: bold;
 }
+.arrow-index{
+  position: absolute;
+  height: 100px;
+  padding-top: 200px;
+  width: 100px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.arrow-nosotros{
+  position: absolute;
+  background-image: radial-gradient(#eeffaa, #552255);
+  border-radius: 50%;
+  height: 100px;
+  text-align: center;
+  padding-top: 30px;
+  width: 100px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+.arrow-nosotros a i{
+  color:#552255 ;
+}
 main div p {
   text-align: center;
   text-shadow: 1px 1px 2px #000;

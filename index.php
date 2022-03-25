@@ -76,6 +76,8 @@ if (isset($_POST['agregar-consulta'])) {
           </ul>
         </div>
       </div>
+      <div class="arrow arrow-index">
+          <a href="#inicio_apisoft"><i class='bx bx-lg bx-arrow-to-bottom bx-fade-up' ></i></a></div>
     </main>
     <section>
       <div class="section-inicio">
@@ -182,7 +184,7 @@ if (isset($_POST['agregar-consulta'])) {
         </div>
       </div>
     </section>
-    <section>
+    <section id="inicio_apisoft">
       <div class="section-servicios">
         <div class="titulo-figura">
           <h3>Servicios</h3>

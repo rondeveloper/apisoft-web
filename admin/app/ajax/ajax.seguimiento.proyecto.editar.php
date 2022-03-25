@@ -60,7 +60,7 @@ if (mysqli_num_rows($resultado) == 0) {
           <input value="<?= $datos_seguimiento_proyecto['id_seguimiento_proyecto'] ?>" name="id-seguimiento-proyecto" type="hidden" />
           <input type="hidden" name="editar-seguimiento_proyecto" value="true" />
           <button type="submit" class="btn btn-primary mx-auto d-block">
-            Editar seguimiento_proyecto
+            Editar Seguimiento Proyecto
           </button>
         </div>
       </div>

@@ -78,6 +78,7 @@
     }
   }
   if (isset($_POST['agregar-consulta_servicio'])) {
+    $estado=$_POST['estado'];
     $id_servicio = $_POST['id-servicio'];
     $id_cliente = $_POST['id-cliente'];
     $id_proyecto = $_POST['id-proyecto'];
@@ -85,9 +86,9 @@
     $id_encargado = $_POST['id-encargado'];
     $observacion_costo_servicio = $_POST['observacion-costo-servicio'];
     $consulta_insert_consulta_servicio = "INSERT INTO consulta_servicio
-    (`id_servicio`, `id_cliente`, `id_proyecto`, `id_programadores`, `id_encargado`, `observacion_costo_servicio`) 
+    (`id_servicio`, `id_cliente`, `id_proyecto`, `id_programadores`, `id_encargado`, `observacion_costo_servicio`,`estado`) 
     VALUES 
-    ('$id_servicio', '$id_cliente', '$id_proyecto', '$id_programadores', '$id_encargado', '$observacion_costo_servicio')";
+    ('$id_servicio', '$id_cliente', '$id_proyecto', '$id_programadores', '$id_encargado', '$observacion_costo_servicio','$estado')";
      $resultado = mysqli_query($conexion, $consulta_insert_consulta_servicio);
     if ($resultado) {
   ?>
@@ -245,7 +246,7 @@ $resultado_consulta = mysqli_query($conexion, $consulta_select_cotizacion);
     }
     function datos_modal_agregar_consulta_servicio(id_cliente) {
       body_modal_agregar = document.getElementById('body_modal_agregar_consulta_servicio')
-      fetch('<?=$_dominio?>admin/app/ajax/ajax.consulta.servicio.agregar.php?codigo_cliente='+id_cliente)
+      fetch('<?=$_dominio?>admin/app/ajax/ajax.consulta.servicio.agregar.inner.php?codigo_cliente='+id_cliente)
         .then(response => response.text())
         .then(data => {
           body_modal_agregar.innerHTML = data

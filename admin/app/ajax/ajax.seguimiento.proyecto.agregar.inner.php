@@ -1,3 +1,8 @@
+<?php
+include "../items/DB.php";
+
+$id_personal=$_GET["codigo_personal"];
+?>
 <form class="row g-3" method="post" action="">
             <div class="card border-primary mb-3 mx-auto" style="max-width: 1000px">
               <div class="card-header bg-transparent border-primary text-primary display-4">
@@ -6,12 +11,36 @@
               <div class="card-body text-primary">
                 <div class="row">
                   <div class="col-md-6">
-                    <label for="id-proyecto" class="form-label">Id Proyecto</label>
-                   <input type="number" class="form-control" id="inputAddress" placeholder="Id Proyecto" name="id-proyecto" >
+                    <label for="id-proyecto" class="form-label">Proyecto</label>
+                    <select name="id-proyecto" class="form-control">
+                      <?php
+                      $consulta_select_proyectos= "SELECT `id_proyecto`,`proyecto` FROM proyectos WHERE `id_encargado`=$id_personal";
+                      $resultado_consulta = mysqli_query($conexion, $consulta_select_proyectos);
+                      while($proyecto=mysqli_fetch_array($resultado_consulta)){
+                        $id_proyecto = $proyecto['id_proyecto'];
+                        $nombre_proyecto = $proyecto['proyecto'];
+                        ?>
+                          <option value="<?= $id_proyecto ?>"><?= $nombre_proyecto ?></option>
+                        <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                   <div class="col-md-6">
-                    <label for="id-encargado" class="form-label">Id Encargado</label>
-                    <input type="number" class="form-control" id="inputAddress" placeholder="Id Encargado" name="id-encargado" >
+                    <label for="id-encargado" class="form-label">Encargado</label>
+                    <select name="id-encargado" class="form-control">
+                      <?php
+                      $consulta = "SELECT `id_personal`,`personal` FROM personales";
+                      $resultado_consulta = mysqli_query($conexion, $consulta);
+                      while($personal=mysqli_fetch_array($resultado_consulta)){
+                        $id_personal = $personal['id_personal'];
+                        $nombre_personal = $personal['personal'];
+                        ?>
+                          <option value="<?= $id_personal ?>"><?= $nombre_personal ?></option>
+                        <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                   <div class="col-md-6">
                     <label for="inputAddress" class="form-label">Id Programadores</label>
